@@ -1,0 +1,29 @@
+// ============================================
+// Container Module - Conteneur principal
+// ============================================
+
+@use "../abstracts/variables.module" as *;
+@use "../abstracts/mixins.module" as *;
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $spacing-lg;
+
+  @include mobile-only {
+    padding: 0 $spacing-md;
+  }
+
+  &--fluid {
+    max-width: 100%;
+  }
+
+  &--narrow {
+    max-width: 800px;
+  }
+
+  &--wide {
+    max-width: 1400px;
+  }
+}

@@ -1,0 +1,23 @@
+// ============================================
+// Functions Module - Fonctions utilitaires
+// ============================================
+
+// Convertir px en rem
+@function rem($pixels, $context: 16) {
+  @return #{$pixels / $context}rem;
+}
+
+// Convertir px en em
+@function em($pixels, $context: 16) {
+  @return #{$pixels / $context}em;
+}
+
+// Calculer un espacement
+@function spacing($multiplier) {
+  @return 1rem * $multiplier;
+}
+
+// Transparence de couleur
+@function alpha($color, $opacity) {
+  @return rgba($color, $opacity);
+}

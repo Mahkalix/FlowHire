@@ -1,0 +1,210 @@
+// ============================================
+// Header Module - En-tête avec motif réseau
+// ============================================
+
+@use "../abstracts/variables.module" as *;
+@use "../abstracts/mixins.module" as *;
+
+.header {
+  position: relative;
+  background: $dark;
+  border-bottom: 1px solid rgba(0, 102, 255, 0.2);
+  padding: $spacing-md $spacing-lg;
+  overflow: hidden;
+
+  // Motif réseau animé
+  &::before {
+    content: "";
+    @include cover;
+    background-image: linear-gradient(
+        rgba(0, 102, 255, 0.1) 1px,
+        transparent 1px
+      ),
+      linear-gradient(90deg, rgba(0, 102, 255, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: networkMove 20s linear infinite;
+    z-index: 0;
+  }
+
+  // Effet brillant diagonal
+  &::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      45deg,
+      transparent 30%,
+      rgba(0, 102, 255, 0.15) 50%,
+      transparent 70%
+    );
+    animation: shimmer 8s ease-in-out infinite;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  // Points lumineux du réseau
+  .network-dots {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: $primary;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(0, 102, 255, 0.8),
+        0 0 20px rgba(0, 102, 255, 0.5), 0 0 30px rgba(0, 102, 255, 0.3);
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    &::before {
+      top: 20%;
+      left: 15%;
+      animation-delay: 0s;
+    }
+
+    &::after {
+      top: 60%;
+      right: 20%;
+      animation-delay: 1.5s;
+    }
+  }
+
+  &-content {
+    position: relative;
+    z-index: 10;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &-logo {
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    color: $white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    transition: all $transition-base;
+
+    &:hover {
+      color: $primary;
+      text-shadow: 0 0 20px rgba(0, 102, 255, 0.6);
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, $primary 0%, $primary-light 100%);
+      border-radius: $radius-md;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0, 102, 255, 0.4),
+        0 0 20px rgba(0, 102, 255, 0.2);
+      animation: glow 3s ease-in-out infinite;
+    }
+  }
+
+  &-nav {
+    display: flex;
+    gap: $spacing-xl;
+    align-items: center;
+
+    @include mobile-only {
+      display: none;
+    }
+  }
+
+  &-link {
+    color: $gray-light;
+    text-decoration: none;
+    font-weight: $font-weight-medium;
+    transition: all $transition-base;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, $primary 0%, $primary-light 100%);
+      transition: width $transition-base;
+      box-shadow: 0 0 10px rgba(0, 102, 255, 0.8);
+    }
+
+    &:hover {
+      color: $white;
+
+      &::after {
+        width: 100%;
+      }
+    }
+
+    &--active {
+      color: $primary;
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@keyframes networkMove {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(50px, 50px);
+  }
+}
+
+@keyframes shimmer {
+  0%,
+  100% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 4px 12px rgba(0, 102, 255, 0.4),
+      0 0 20px rgba(0, 102, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(0, 102, 255, 0.6),
+      0 0 30px rgba(0, 102, 255, 0.4), 0 0 40px rgba(0, 102, 255, 0.2);
+  }
+}

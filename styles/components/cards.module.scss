@@ -1,0 +1,48 @@
+// ============================================
+// Cards Module - Cartes de contenu
+// ============================================
+
+@use "../abstracts/variables.module" as *;
+@use "../abstracts/mixins.module" as *;
+
+.card {
+  background: $bg-card;
+  backdrop-filter: $blur-sm;
+  padding: $spacing-xl;
+  border-radius: $radius-lg;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all $transition-base;
+
+  &:hover {
+    background: $bg-card-hover;
+    border-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-4px);
+  }
+
+  &__title {
+    font-size: $font-size-2xl;
+    margin-bottom: $spacing-md;
+    color: $white;
+  }
+
+  &__text {
+    font-size: $font-size-base;
+    color: $gray-light;
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  &--bordered {
+    border-left: 3px solid $primary;
+  }
+
+  &--hover-lift {
+    @include hover-lift(-6px);
+  }
+}
+
+// Grille de cartes
+.card-grid {
+  @include grid-auto(250px, 24px);
+  margin-top: $spacing-3xl;
+}

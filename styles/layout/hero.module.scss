@@ -1,0 +1,172 @@
+// ============================================
+// Hero Module - Section hero
+// ============================================
+
+@use "../abstracts/variables.module" as *;
+@use "../abstracts/mixins.module" as *;
+
+.hero {
+  background: $dark;
+  position: relative;
+  color: $white;
+  padding: 120px $spacing-lg 140px;
+  text-align: center;
+  overflow: hidden;
+
+  // Gradient subtil en overlay
+  &::before {
+    content: "";
+    @include cover;
+    background: radial-gradient(
+      ellipse at top,
+      rgba(0, 102, 255, 0.15) 0%,
+      transparent 60%
+    );
+    z-index: 0;
+  }
+
+  // Grid pattern subtil
+  &::after {
+    content: "";
+    @include cover;
+    background-image: radial-gradient(
+      rgba(255, 255, 255, 0.03) 1px,
+      transparent 1px
+    );
+    background-size: 50px 50px;
+    opacity: 0.5;
+    z-index: 0;
+  }
+
+  &-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  h1 {
+    margin-bottom: $spacing-lg;
+    background: linear-gradient(135deg, $white 0%, $gray-light 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    @include mobile-only {
+      font-size: $font-size-3xl;
+    }
+  }
+
+  .subtitle {
+    font-size: $font-size-2xl;
+    margin-bottom: $spacing-xl;
+    opacity: 0.9;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: $font-weight-normal;
+    color: $gray-light;
+
+    @include mobile-only {
+      font-size: $font-size-lg;
+    }
+  }
+
+  // Compteur V2 en haut à gauche du hero
+  &-countdown {
+    position: absolute;
+    top: $spacing-lg;
+    left: $spacing-lg;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    background: linear-gradient(
+      135deg,
+      rgba(0, 102, 255, 0.12) 0%,
+      rgba(94, 114, 235, 0.08) 100%
+    );
+    backdrop-filter: $blur-sm;
+    border: 1px solid rgba(0, 102, 255, 0.25);
+    border-radius: $radius-md;
+    padding: 6px 12px;
+    transition: all $transition-base;
+    font-size: 0.8rem;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+      border-color: rgba(0, 102, 255, 0.6);
+      transform: translateY(-1px);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+      background: linear-gradient(
+        135deg,
+        rgba(0, 102, 255, 0.18) 0%,
+        rgba(94, 114, 235, 0.12) 100%
+      );
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+
+    @include mobile-only {
+      top: $spacing-sm;
+      left: $spacing-sm;
+      padding: 4px 8px;
+      font-size: 0.7rem;
+      gap: 4px;
+    }
+  }
+
+  &-countdown-icon {
+    font-size: 1rem;
+    line-height: 1;
+
+    @include mobile-only {
+      font-size: 0.85rem;
+    }
+  }
+
+  &-countdown-content {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  &-countdown-label {
+    font-size: 0.8rem;
+    color: $gray-light;
+    font-weight: $font-weight-medium;
+    line-height: 1;
+    white-space: nowrap;
+
+    @include mobile-only {
+      font-size: 0.7rem;
+    }
+  }
+
+  &-countdown-timer {
+    display: flex;
+    gap: 4px;
+    font-size: 0.8rem;
+    color: $white;
+    line-height: 1;
+
+    span {
+      strong {
+        color: $primary;
+        font-weight: $font-weight-bold;
+        font-family: "SF Mono", "Monaco", monospace;
+        text-shadow: 0 0 6px rgba(0, 102, 255, 0.4);
+      }
+    }
+
+    @include mobile-only {
+      font-size: 0.7rem;
+      gap: 2px;
+    }
+  }
+
+  @include mobile-only {
+    padding: $spacing-3xl $spacing-md;
+  }
+}

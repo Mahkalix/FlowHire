@@ -1,0 +1,278 @@
+// ============================================
+// Footer Module - Pied de page avec motif réseau
+// ============================================
+
+@use "../abstracts/variables.module" as *;
+@use "../abstracts/mixins.module" as *;
+
+.footer {
+  position: relative;
+  background: $dark;
+  border-top: 1px solid rgba(0, 102, 255, 0.2);
+  padding: $spacing-3xl $spacing-lg $spacing-lg;
+  overflow: hidden;
+  margin-top: auto;
+
+  // Motif réseau en toile
+  &::before {
+    content: "";
+    @include cover;
+    background-image: 
+      // Lignes horizontales
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 49px,
+        rgba(0, 102, 255, 0.08) 49px,
+        rgba(0, 102, 255, 0.08) 50px
+      ),
+      // Lignes verticales
+      repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 49px,
+          rgba(0, 102, 255, 0.08) 49px,
+          rgba(0, 102, 255, 0.08) 50px
+        );
+    animation: networkMove 25s linear infinite;
+    z-index: 0;
+  }
+
+  // Nœuds lumineux du réseau
+  .network-nodes {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+
+    .node {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: $primary;
+      border-radius: 50%;
+      box-shadow: 0 0 15px rgba(0, 102, 255, 0.9),
+        0 0 30px rgba(0, 102, 255, 0.6), 0 0 45px rgba(0, 102, 255, 0.3);
+      animation: nodePulse 4s ease-in-out infinite;
+
+      &:nth-child(1) {
+        top: 20%;
+        left: 10%;
+        animation-delay: 0s;
+      }
+
+      &:nth-child(2) {
+        top: 30%;
+        right: 15%;
+        animation-delay: 1s;
+      }
+
+      &:nth-child(3) {
+        bottom: 40%;
+        left: 50%;
+        animation-delay: 2s;
+      }
+
+      &:nth-child(4) {
+        bottom: 20%;
+        right: 30%;
+        animation-delay: 3s;
+      }
+
+      &:nth-child(5) {
+        top: 60%;
+        left: 25%;
+        animation-delay: 1.5s;
+      }
+    }
+  }
+
+  // Effet brillant qui traverse
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(0, 102, 255, 0.2) 50%,
+      transparent 100%
+    );
+    animation: sweepGlow 10s ease-in-out infinite;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  &-content {
+    position: relative;
+    z-index: 10;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  &-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: $spacing-xl;
+    margin-bottom: $spacing-xl;
+
+    @include mobile-only {
+      grid-template-columns: 1fr;
+      gap: $spacing-lg;
+    }
+  }
+
+  &-section {
+    h3 {
+      font-size: $font-size-lg;
+      color: $white;
+      margin-bottom: $spacing-md;
+      position: relative;
+      display: inline-block;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 40px;
+        height: 2px;
+        background: linear-gradient(90deg, $primary 0%, transparent 100%);
+        box-shadow: 0 0 8px rgba(0, 102, 255, 0.8);
+      }
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      margin-bottom: $spacing-sm;
+    }
+
+    a {
+      color: $gray-light;
+      text-decoration: none;
+      transition: all $transition-base;
+      display: inline-block;
+      position: relative;
+
+      &::before {
+        content: "›";
+        position: absolute;
+        left: -16px;
+        color: $primary;
+        opacity: 0;
+        transition: all $transition-base;
+      }
+
+      &:hover {
+        color: $primary;
+        transform: translateX(8px);
+        text-shadow: 0 0 10px rgba(0, 102, 255, 0.5);
+
+        &::before {
+          opacity: 1;
+          left: -12px;
+        }
+      }
+    }
+  }
+
+  &-bottom {
+    position: relative;
+    z-index: 10;
+    padding-top: $spacing-lg;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: $spacing-md;
+
+    @include mobile-only {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+
+  &-copyright {
+    color: $gray;
+    font-size: $font-size-sm;
+
+    .brand {
+      color: $primary;
+      font-weight: $font-weight-semibold;
+      text-shadow: 0 0 10px rgba(0, 102, 255, 0.5);
+    }
+  }
+
+  &-social {
+    display: flex;
+    gap: $spacing-md;
+    align-items: center;
+
+    a {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: $bg-card;
+      backdrop-filter: $blur-sm;
+      border: 1px solid rgba(0, 102, 255, 0.2);
+      border-radius: $radius-md;
+      color: $gray-light;
+      transition: all $transition-base;
+
+      &:hover {
+        background: rgba(0, 102, 255, 0.2);
+        border-color: $primary;
+        color: $primary;
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(0, 102, 255, 0.3),
+          0 0 30px rgba(0, 102, 255, 0.2);
+      }
+    }
+  }
+}
+
+@keyframes networkMove {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(50px, 50px);
+  }
+}
+
+@keyframes nodePulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+    box-shadow: 0 0 15px rgba(0, 102, 255, 0.9), 0 0 30px rgba(0, 102, 255, 0.6),
+      0 0 45px rgba(0, 102, 255, 0.3);
+  }
+  50% {
+    transform: scale(1.8);
+    opacity: 0.6;
+    box-shadow: 0 0 25px rgba(0, 102, 255, 1), 0 0 50px rgba(0, 102, 255, 0.8),
+      0 0 75px rgba(0, 102, 255, 0.5);
+  }
+}
+
+@keyframes sweepGlow {
+  0% {
+    left: -100%;
+  }
+  50%,
+  100% {
+    left: 100%;
+  }
+}

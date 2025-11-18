@@ -1,0 +1,68 @@
+// ============================================
+// CTA Module - Call to Action final
+// ============================================
+
+@use "../abstracts/variables.module" as *;
+@use "../abstracts/mixins.module" as *;
+
+.cta-final {
+  background: $dark;
+  position: relative;
+  color: $white;
+  text-align: center;
+  padding: 100px $spacing-lg;
+  overflow: hidden;
+
+  // Gradient radial bleu
+  &::before {
+    content: "";
+    @include cover;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(0, 102, 255, 0.2) 0%,
+      transparent 70%
+    );
+    z-index: 0;
+  }
+
+  &::after {
+    content: "";
+    @include cover;
+    background-image: radial-gradient(
+      rgba(0, 102, 255, 0.1) 1px,
+      transparent 1px
+    );
+    background-size: 40px 40px;
+    opacity: 0.3;
+    z-index: 0;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  @include mobile-only {
+    padding: $spacing-3xl $spacing-md;
+  }
+
+  h2 {
+    color: $white;
+    font-size: $font-size-4xl;
+    margin-bottom: $spacing-lg;
+    background: linear-gradient(135deg, $white 0%, $gray-light 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    @include mobile-only {
+      font-size: $font-size-3xl;
+    }
+  }
+
+  p {
+    color: $gray-light;
+    font-size: $font-size-xl;
+    margin-bottom: $spacing-xl;
+  }
+}

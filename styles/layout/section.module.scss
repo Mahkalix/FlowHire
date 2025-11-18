@@ -1,0 +1,35 @@
+// ============================================
+// Section Module - Sections de page
+// ============================================
+
+@use "../abstracts/variables.module" as *;
+@use "../abstracts/mixins.module" as *;
+
+section {
+  padding: $spacing-3xl $spacing-lg;
+
+  @include mobile-only {
+    padding: $spacing-2xl $spacing-md;
+  }
+
+  h2 {
+    font-size: $font-size-4xl;
+    margin-bottom: $spacing-lg;
+    text-align: center;
+    font-weight: $font-weight-bold;
+    color: $white;
+
+    @include mobile-only {
+      font-size: $font-size-3xl;
+    }
+  }
+
+  p {
+    font-size: $font-size-lg;
+    color: $gray-light;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto $spacing-xl;
+    line-height: 1.7;
+  }
+}

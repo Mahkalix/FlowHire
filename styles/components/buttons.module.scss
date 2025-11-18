@@ -1,0 +1,116 @@
+// ============================================
+// Buttons Module - Boutons d'action
+// ============================================
+
+@use "../abstracts/variables.module" as *;
+@use "../abstracts/mixins.module" as *;
+
+.btn {
+  padding: 14px 32px;
+  border-radius: $radius-md;
+  text-decoration: none;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-base;
+  transition: all $transition-base;
+  display: inline-block;
+  cursor: pointer;
+  border: none;
+  text-align: center;
+  line-height: 1.5;
+  position: relative;
+  overflow: hidden;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  // Primary - Bleu moderne
+  &-primary {
+    background: $primary;
+    color: $white;
+    box-shadow: $shadow-primary;
+    border: 1px solid rgba(0, 102, 255, 0.2);
+
+    &:hover:not(:disabled) {
+      background: $primary-light;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(0, 102, 255, 0.35);
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(0);
+    }
+  }
+
+  // Secondary - Transparent avec bordure
+  &-secondary {
+    background: $bg-card;
+    backdrop-filter: $blur-sm;
+    color: $white;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    &:hover:not(:disabled) {
+      background: $bg-card-hover;
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+  }
+
+  // Outline
+  &-outline {
+    background: transparent;
+    color: $primary;
+    border: 2px solid $primary;
+
+    &:hover:not(:disabled) {
+      background: rgba(0, 102, 255, 0.1);
+      border-color: $primary-light;
+    }
+  }
+
+  // Solid
+  &-solid {
+    background: $primary;
+    color: $white;
+
+    &:hover:not(:disabled) {
+      background: $primary-dark;
+    }
+  }
+
+  // Sizes
+  &-sm {
+    padding: 10px 24px;
+    font-size: $font-size-sm;
+  }
+
+  &-lg {
+    padding: 18px 48px;
+    font-size: $font-size-lg;
+  }
+
+  // Block
+  &-block {
+    width: 100%;
+    display: block;
+  }
+}
+
+.cta-group {
+  display: flex;
+  gap: $spacing-md;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: $spacing-xl;
+
+  @include mobile-only {
+    flex-direction: column;
+    align-items: center;
+
+    .btn {
+      width: 100%;
+      max-width: 320px;
+    }
+  }
+}

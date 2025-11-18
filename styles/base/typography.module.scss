@@ -1,0 +1,89 @@
+// ============================================
+// Typography Module - Styles de texte
+// ============================================
+
+@use "../abstracts/variables.module" as *;
+
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: 1.6;
+  color: $off-white;
+  font-weight: $font-weight-normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-family-heading;
+  font-weight: $font-weight-bold;
+  line-height: 1.2;
+  margin-bottom: $spacing-md;
+  color: $white;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: $font-size-5xl;
+  font-weight: $font-weight-extrabold;
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  font-size: $font-size-4xl;
+  font-weight: $font-weight-bold;
+  letter-spacing: -0.025em;
+}
+
+h3 {
+  font-size: $font-size-3xl;
+  letter-spacing: -0.02em;
+}
+
+h4 {
+  font-size: $font-size-2xl;
+}
+
+h5 {
+  font-size: $font-size-xl;
+}
+
+h6 {
+  font-size: $font-size-lg;
+}
+
+p {
+  margin-bottom: $spacing-md;
+  color: $gray-light;
+}
+
+strong,
+b {
+  font-weight: $font-weight-bold;
+  color: $white;
+}
+
+em,
+i {
+  font-style: italic;
+}
+
+small {
+  font-size: $font-size-sm;
+  color: $gray;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}

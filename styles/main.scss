@@ -1,0 +1,31 @@
+// ============================================
+// MAIN - Point d'entrée principal
+// ============================================
+
+// 1. Abstracts - Variables, mixins, fonctions (pas de CSS généré)
+@use "abstracts/variables.module";
+@use "abstracts/mixins.module";
+@use "abstracts/functions.module";
+
+// 2. Base - Reset, typographie, utilitaires
+@use "base/reset.module";
+@use "base/typography.module";
+@use "base/utilities.module";
+
+// 3. Layout - Structure de page
+@use "layout/header.module";
+@use "layout/footer.module";
+@use "layout/container.module";
+@use "layout/section.module";
+@use "layout/hero.module";
+@use "layout/problem.module";
+@use "layout/solution.module";
+@use "layout/features.module";
+@use "layout/countdown.module";
+@use "layout/cta.module";
+
+// 4. Components - Composants réutilisables
+@use "components/buttons.module";
+@use "components/cards.module";
+@use "components/icons.module";
+@use "components/section-divider.module";

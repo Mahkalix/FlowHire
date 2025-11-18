@@ -1,0 +1,109 @@
+// ============================================
+// Variables Module - Couleurs, tailles, espacements
+// ============================================
+
+// Couleurs principales - Bleu moderne
+$primary: #0066ff;
+$primary-dark: #0052cc;
+$primary-light: #3d8bff;
+$secondary: #5e72eb;
+$secondary-dark: #4c5fd5;
+
+// Couleurs neutres - Style Discord/Apple
+$dark: #1a1d29;
+$dark-secondary: #23272f;
+$dark-tertiary: #2c2f38;
+$gray: #8e9297;
+$gray-light: #b5bac1;
+$gray-dark: #6a6f76;
+$light-gray: #f2f3f5;
+$off-white: #f8f9fa;
+$white: #ffffff;
+
+// Backgrounds avec transparence
+$bg-primary: rgba(26, 29, 41, 0.98);
+$bg-secondary: rgba(35, 39, 47, 0.95);
+$bg-card: rgba(255, 255, 255, 0.05);
+$bg-card-hover: rgba(255, 255, 255, 0.08);
+$bg-blur: rgba(255, 255, 255, 0.1);
+
+// Couleurs sémantiques
+$success: #3ba55c;
+$warning: #faa61a;
+$error: #ed4245;
+$info: #0066ff;
+
+// Typographie
+$font-family-base: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+  "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$font-family-heading: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+  "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+// Tailles de police
+$font-size-base: 1rem;
+$font-size-sm: 0.875rem;
+$font-size-lg: 1.125rem;
+$font-size-xl: 1.25rem;
+$font-size-2xl: 1.5rem;
+$font-size-3xl: 2rem;
+$font-size-4xl: 2.5rem;
+$font-size-5xl: 3.5rem;
+
+// Poids de police
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-extrabold: 800;
+
+// Espacements
+$spacing-xs: 0.5rem;
+$spacing-sm: 1rem;
+$spacing-md: 1.5rem;
+$spacing-lg: 2rem;
+$spacing-xl: 3rem;
+$spacing-2xl: 4rem;
+$spacing-3xl: 6rem;
+$spacing-4xl: 8rem;
+
+// Border radius - Style moderne arrondi
+$radius-sm: 6px;
+$radius-md: 12px;
+$radius-lg: 16px;
+$radius-xl: 24px;
+$radius-2xl: 32px;
+$radius-full: 9999px;
+
+// Ombres - Plus subtiles
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+$shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+$shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.12);
+$shadow-xl: 0 24px 48px rgba(0, 0, 0, 0.16);
+$shadow-primary: 0 8px 24px rgba(0, 102, 255, 0.25);
+
+// Transitions
+$transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+$transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+$transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+// Breakpoints
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+$breakpoint-2xl: 1536px;
+
+// Z-index
+$z-dropdown: 1000;
+$z-sticky: 1020;
+$z-fixed: 1030;
+$z-modal-backdrop: 1040;
+$z-modal: 1050;
+$z-popover: 1060;
+$z-tooltip: 1070;
+
+// Backdrop blur
+$blur-sm: blur(8px);
+$blur-md: blur(16px);
+$blur-lg: blur(24px);
